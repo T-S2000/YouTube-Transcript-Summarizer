@@ -62,15 +62,3 @@ npm install
 ```
 npm start
 ```
-
-
-## Demo of the Project
-
-https://drive.google.com/file/d/1u5OVxgmmDYr7lzqwm5XKmbA7Dsp6WyCh/view?usp=sharing
-## Authors
-
-- [@Virag_Patel](https://www.github.com/19IT114)
-- [@Venis_Prajapati](https://www.github.com/venisprajapati)
-
-
-### [Click here](https://user-images.githubusercontent.com/61548445/149874631-bc411249-2d05-4e0c-ac29-dfb93de78a82.png) to have a look at the poster of the project.
