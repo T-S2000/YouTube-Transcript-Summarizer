@@ -73,7 +73,7 @@ def respond():
         else:
             data['message'] = "Success"
             data['id'] = video_id
-            data['original_txt_length'], data['final_summ_length'], data['eng_summary'], data['hind_summary']= nlp_model(
+            data['original_txt_length'], data['final_summ_length'], data['eng_summary'], data['mal_summary']= nlp_model(
                 video_id)
 
     body["data"] = data
@@ -110,5 +110,3 @@ if __name__ == '__main__':
 
     # Threaded option to enable multiple instances for multiple user access support
     app.run(threaded=True)
-
-# Deployment to Heroku Cloud.

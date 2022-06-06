@@ -1,8 +1,9 @@
-import braille from 'braille';
 import React from 'react';
 import Tabs from "./Tabs";
 import ET from "../transcripts/English.txt";
-import HT from "../transcripts/Hindi.txt";
+import ML from "../transcripts/Malayalam.txt";
+import loadingGif from "../assets/waiting.gif"
+
 class BackendAPI extends React.Component {
 
 	constructor(props) {
@@ -40,11 +41,7 @@ class BackendAPI extends React.Component {
 							isLoading: false,
 							message: result.data.message,
 							englishTranscript: result.data.eng_summary,
-							hindiTranscript: result.data.hind_summary,
-							gujaratiTranscript: result.data.guj_summary,
-							originalTextLength: result.data.original_txt_length,
-							summarizedTextLength: result.data.final_summ_length,
-							brailleText: braille.toBraille(result.data.eng_summary)
+							malayalamTranscript: result.data.mal_summary,
 						});
 					} else {
 						this.setState({
@@ -87,21 +84,16 @@ class BackendAPI extends React.Component {
 	
 	render() {
 
-		const { isLoaded, isLoading, message, englishTranscript, hindiTranscript, originalTextLength, summarizedTextLength } = this.state;
+		const { isLoaded, isLoading, message, englishTranscript, malayalamTranscript, } = this.state;
 
 		if (isLoading) {
 
 			return (
 				<>
-					<form onSubmit={this.handleSubmit}>
-						<label>
-							Video URL:
-						</label>
-						<input className="input-1" type="url" value={this.state.value} placeholder="Paste your YouTube Video link here." name="name" onChange={this.handleChange} required autoComplete="off" />
-						<input className="submit-1" type="submit" value="Summarize" />
-					</form>
 					<center>
-						<div className="lds-ripple"><div></div><div></div></div>
+					<div 	className="lds-ripple"><div></div><div></div></div>
+						{/* <div className='box'><div></div></div> */}
+						{/* <img src={loadingGif} width="150" height="150"></img> */}
 					</center>
 					<Tabs>
 						<div label="English">
@@ -123,14 +115,6 @@ class BackendAPI extends React.Component {
 
 				return (
 					<>
-						<form onSubmit={this.handleSubmit}>
-							<label>
-								Video URL:
-							</label>
-							<input className="input-1" type="url" value={this.state.value} placeholder="Paste your YouTube Video link here." name="name" onChange={this.handleChange} required autoComplete="off" />
-							<input className="submit-1" type="submit" value="Summarize" />
-						</form>
-						<p>{originalTextLength}<i className="arrow right"></i>{summarizedTextLength}</p>
 						<Tabs>
 							<div label="English">
 								<div className="tab-content">
@@ -150,10 +134,10 @@ class BackendAPI extends React.Component {
 								<div className="tab-content">
 									<div>
 										<center>
-										<a href={HT} className="buttonDownload" download="Hindi_Transcript.txt" type="button">Download</a>
+										<a href={ML} className="buttonDownload" download="Malayalam_Transcript.txt" type="button">Download</a>
 										</center>
 									</div>
-									{hindiTranscript}
+									{malayalamTranscript}
 								</div>
 							</div>
 						</Tabs>
@@ -165,16 +149,9 @@ class BackendAPI extends React.Component {
 
 				return (
 					<>
-						<form onSubmit={this.handleSubmit}>
-							<label>
-								Video URL:
-							</label>
-							<input className="input-1" type="url" value={this.state.value} placeholder="Paste your YouTube Video link here." name="name" onChange={this.handleChange} required autoComplete="off" />
-							<input className="submit-1" type="submit" value="Summarize" />
-						</form>
 						<div>
 							<br />
-							An Error occured: {this.state.failedMessage}.
+							Please use this extension in <a href='https://youtube.com'>Youtube</a>
 						</div>
 						<Tabs>
 							<div label="English">
@@ -198,14 +175,6 @@ class BackendAPI extends React.Component {
 
 			return (
 				<>
-					<form onSubmit={this.handleSubmit}>
-						<label>
-							Video URL:
-						</label>
-						<input className="input-1" type="url" value={this.state.value} placeholder="Paste your YouTube Video link here." name="name" onChange={this.handleChange} required autoComplete="off" />
-						<input className="submit-1" type="submit" value="Summarize" />
-					</form>
-					<p>Original Length<i className="arrow right"></i>Final Length</p>
 					<Tabs>
 						<div label="English">
 							<div className="tab-content-1">
